@@ -20,7 +20,7 @@ const AppContextProvider = (props) => {
 
     const fetchContactList = async () => {
         try {
-            const res = await axios.get({url});
+            const res = await axios.get(`${url}/api/contacts`);
             console.log(res.data);
             setContactList(res.data);
         } catch (err) {

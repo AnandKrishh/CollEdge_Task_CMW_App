@@ -24,7 +24,7 @@ const InputForm = () => {
     const handleSubmit = async (e) =>{
         e.preventDefault();
         try {
-            const res = await axios.post({url}, formData);
+            const res = await axios.post(`${url}/api/contacts`, formData);
             setContactList(prev => [res.data, ...prev]);
             console.log('Created contact- ', res.data);
             setFormData({ fullName: '', email: '', phoneNumber: '', message: '' });
