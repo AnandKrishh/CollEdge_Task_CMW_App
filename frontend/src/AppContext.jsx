@@ -15,10 +15,12 @@ const AppContextProvider = (props) => {
 
     const [contactList, setContactList] = useState([]);
 
+    const url = 'https://colledge-task-cmw-app-backend.onrender.com';
+
 
     const fetchContactList = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/contacts');
+            const res = await axios.get({url});
             console.log(res.data);
             setContactList(res.data);
         } catch (err) {
@@ -33,7 +35,7 @@ const AppContextProvider = (props) => {
 
 
 
-const value = { addBtnClicked, setAddBtnClicked, formData, setFormData, contactList, setContactList }
+const value = { addBtnClicked, setAddBtnClicked, formData, setFormData, contactList, setContactList, url }
 
 return (
     <AppContext.Provider value={value}>

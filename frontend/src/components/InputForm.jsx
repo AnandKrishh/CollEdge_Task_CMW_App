@@ -4,7 +4,7 @@ import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import { AppContext } from '../AppContext' 
 
 const InputForm = () => {
-    const { addBtnClicked, setAddBtnClicked, formData, setFormData, setContactList} = useContext(AppContext);
+    const { addBtnClicked, setAddBtnClicked, formData, setFormData, setContactList, url} = useContext(AppContext);
 
     const handleClick = () => {
         setAddBtnClicked((prev) => !prev);
@@ -24,7 +24,7 @@ const InputForm = () => {
     const handleSubmit = async (e) =>{
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:5000/api/contacts', formData);
+            const res = await axios.post({url}, formData);
             setContactList(prev => [res.data, ...prev]);
             console.log('Created contact- ', res.data);
             setFormData({ fullName: '', email: '', phoneNumber: '', message: '' });
